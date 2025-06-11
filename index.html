@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Rencana Bisnis - BrandKita (Interaktif)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-2;
+        }
+        .section-subtitle {
+            @apply text-lg text-indigo-600 font-semibold mb-8;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg;
+        }
+        /* Styling untuk Animasi Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Styling untuk FAQ Accordion */
+        .faq-question {
+            cursor: pointer;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+        .faq-item.active .faq-answer {
+            padding-top: 1rem;
+            max-height: 300px; /* Adjust as needed */
+        }
+        .faq-item.active .icon-plus {
+            display: none;
+        }
+        .faq-item:not(.active) .icon-minus {
+            display: none;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <!-- Header & Navigasi -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-indigo-600">BrandKita</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#masalah" class="text-gray-600 hover:text-indigo-600 transition-colors">Masalah</a>
+                <a href="#solusi" class="text-gray-600 hover:text-indigo-600 transition-colors">Solusi</a>
+                <a href="#alur-bisnis" class="text-gray-600 hover:text-indigo-600 transition-colors">Alur Bisnis</a>
+                <a href="#rencana" class="text-gray-600 hover:text-indigo-600 transition-colors">Rencana</a>
+                <a href="#faq" class="text-gray-600 hover:text-indigo-600 transition-colors">FAQ</a>
+                <a href="#kontak" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Hubungi Kami</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#masalah" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Masalah</a>
+            <a href="#solusi" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Solusi</a>
+            <a href="#alur-bisnis" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Alur Bisnis</a>
+            <a href="#rencana" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Rencana</a>
+            <a href="#faq" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">FAQ</a>
+            <a href="#kontak" class="block px-6 py-3 bg-indigo-50 text-indigo-600 font-semibold">Hubungi Kami</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Bagian Hero -->
+        <section id="hero" class="bg-white">
+            <div class="container mx-auto px-6 py-24 text-center">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-gray-800 leading-tight mb-4 reveal">
+                    Memberdayakan UMKM melalui <span class="text-indigo-600">Data dan Strategi.</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8 reveal" style="transition-delay: 200ms;">
+                    Kami menyediakan ekosistem pertumbuhan untuk UMKM di Indonesia, dimulai dengan sistem pencatatan bisnis terintegrasi pada platform Google Sheets.
+                </p>
+                <div class="reveal" style="transition-delay: 400ms;">
+                     <a href="#solusi" class="bg-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-transform transform hover:scale-105 inline-block">Lihat Solusi Kami</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Masalah -->
+        <section id="masalah" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center reveal">
+                    <h2 class="section-title">Tantangan Setiap Pemilik UMKM</h2>
+                    <p class="section-subtitle">Masalah yang kami pecahkan.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card reveal"><h3 class="font-bold text-xl mb-2">"Di Mana Uang Saya?"</h3><p>Arus kas tidak terpantau, menyebabkan kesulitan dalam mengelola modal kerja yang krusial.</p></div>
+                    <div class="card reveal" style="transition-delay: 100ms;"><h3 class="font-bold text-xl mb-2">"Untung atau Rugi?"</h3><p>Tanpa perhitungan HPP yang akurat, laba bersih hanyalah sebuah misteri yang tidak terpecahkan.</p></div>
+                    <div class="card reveal" style="transition-delay: 200ms;"><h3 class="font-bold text-xl mb-2">"Stok Tiba-tiba Habis!"</h3><p>Manajemen inventaris yang buruk menyebabkan kehilangan potensi penjualan di momen penting.</p></div>
+                    <div class="card reveal" style="transition-delay: 300ms;"><h3 class="font-bold text-xl mb-2">"Habis Waktu untuk Admin"</h3><p>Waktu berharga habis untuk merekap bon dan nota, bukan untuk fokus pada inovasi produk.</p></div>
+                    <div class="card reveal" style="transition-delay: 400ms;"><h3 class="font-bold text-xl mb-2">"Takut Mengambil Risiko"</h3><p>Keputusan bisnis sering ditunda atau dibuat berdasarkan intuisi karena tidak ada data yang mendukung.</p></div>
+                    <div class="card bg-indigo-50 border border-indigo-200 reveal" style="transition-delay: 500ms;"><h3 class="font-bold text-xl mb-2 text-indigo-800">Software Mahal & Rumit</h3><p class="text-indigo-700">Software akuntansi profesional seringkali terasa terlalu mahal, rumit, dan berlebihan untuk skala UMKM.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Solusi -->
+        <section id="solusi" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center reveal">
+                    <h2 class="section-title">Sistem Kendali Bisnis Anda</h2>
+                    <p class="section-subtitle">Produk Inti: Sistem Cerdas UMKM - Workbook Google Sheets.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="card items-center reveal"><div class="bg-indigo-100 rounded-full p-4 inline-block mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div><h3 class="font-bold text-xl mb-2">Terintegrasi</h3><p>Satu input data akan otomatis memperbarui modul terkait. Catat penjualan, stok langsung berkurang.</p></div>
+                    <div class="card items-center reveal" style="transition-delay: 150ms;"><div class="bg-indigo-100 rounded-full p-4 inline-block mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg></div><h3 class="font-bold text-xl mb-2">Aksesibel</h3><p>Akses dan edit bisnis Anda kapan saja, di mana saja, melalui laptop atau smartphone.</p></div>
+                    <div class="card items-center reveal" style="transition-delay: 300ms;"><div class="bg-indigo-100 rounded-full p-4 inline-block mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div><h3 class="font-bold text-xl mb-2">Kolaboratif</h3><p>Kerjakan bersama tim atau mitra Anda secara real-time tanpa hambatan lokasi.</p></div>
+                    <div class="card items-center reveal" style="transition-delay: 450ms;"><div class="bg-indigo-100 rounded-full p-4 inline-block mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg></div><h3 class="font-bold text-xl mb-2">Aman & Terjangkau</h3><p>Data aman di Google Cloud tanpa biaya lisensi software bulanan yang memberatkan.</p></div>
+                </div>
+                 <div class="mt-12 text-center reveal">
+                    <p class="text-2xl font-bold text-gray-800 italic">"Kami mengubah data yang berceceran menjadi keputusan yang strategis."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Alur Bisnis -->
+        <section id="alur-bisnis" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center reveal">
+                    <h2 class="section-title">Alur Bisnis Kami</h2>
+                    <p class="section-subtitle">Dari Kesadaran hingga Menjadi Pelanggan Setia.</p>
+                </div>
+                <!-- Alur ini dibuat lebih sederhana untuk efek animasi yang lebih baik -->
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                        <div class="card text-center reveal"><div class="text-3xl font-bold text-indigo-600 mb-2">1. Awareness</div><p>Melihat konten edukasi atau iklan kami di media sosial.</p></div>
+                        <div class="card text-center reveal" style="transition-delay: 100ms;"><div class="text-3xl font-bold text-indigo-600 mb-2">2. Consideration</div><p>Mengunjungi website kami untuk mempelajari lebih dalam.</p></div>
+                        <div class="card text-center reveal" style="transition-delay: 200ms;"><div class="text-3xl font-bold text-indigo-600 mb-2">3. Conversion</div><p>Melakukan pembelian template produk kami.</p></div>
+                        <div class="card text-center reveal" style="transition-delay: 300ms;"><div class="text-3xl font-bold text-indigo-600 mb-2">4. Delivery</div><p>Menerima produk secara otomatis via email.</p></div>
+                        <div class="card text-center reveal" style="transition-delay: 400ms;"><div class="text-3xl font-bold text-indigo-600 mb-2">5. Nurturing</div><p>Bergabung dengan komunitas eksklusif kami.</p></div>
+                        <div class="card text-center reveal" style="transition-delay: 500ms;"><div class="text-3xl font-bold text-indigo-600 mb-2">6. Upselling</div><p>Mendapat penawaran workshop & konsultasi.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Strategi -->
+        <section id="strategi" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center reveal">
+                    <h2 class="section-title">Strategi Pemasaran & Penjualan</h2>
+                    <p class="section-subtitle">Pendekatan kami adalah "Educate First, Sell Later".</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="reveal">
+                        <img src="https://placehold.co/600x400/E9D5FF/3730A3?text=Konten+Edukasi" alt="Konten Edukasi" class="rounded-lg shadow-xl">
+                    </div>
+                    <div class="space-y-8 reveal" style="transition-delay: 200ms;">
+                        <div><h3 class="text-2xl font-bold mb-2">1. Branding di Media Sosial</h3><p>Membangun otoritas dengan memberikan konten edukasi singkat dan praktis seputar keuangan dan operasional bisnis di Instagram & TikTok.</p></div>
+                        <div><h3 class="text-2xl font-bold mb-2">2. Pemasaran Digital</h3><p>Menggunakan Iklan Meta dengan strategi corong (funnel) untuk menjangkau, mengedukasi, dan mengkonversi target audiens yang tepat.</p></div>
+                        <div><h3 class="text-2xl font-bold mb-2">3. Alur Penjualan Jelas</h3><p>Mengarahkan calon pelanggan dari iklan/konten ke website, lalu ke halaman pembelian, dan terakhir ke komunitas eksklusif kami.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Rencana Masa Depan (Future Planning) -->
+        <section id="rencana" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center reveal">
+                    <h2 class="section-title">Peta Jalan & Rencana Masa Depan</h2>
+                    <p class="section-subtitle">Kami membangun bisnis ini untuk jangka panjang.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card border-t-4 border-indigo-300 reveal"><p class="font-bold text-indigo-500 mb-2">Fase 1: Tahun Pertama</p><h3 class="text-2xl font-bold mb-4">Validasi & Komunitas</h3><ul class="space-y-2 text-gray-600 list-disc list-inside"><li><strong>Produk:</strong> Peluncuran & penyempurnaan Template Inti v1.0.</li><li><strong>Pemasaran:</strong> Fokus pada Meta Ads dan membangun audiens organik.</li><li><strong>Tujuan:</strong> Mencapai 1.000 pengguna pertama & membangun studi kasus.</li></ul></div>
+                    <div class="card border-t-4 border-indigo-500 reveal" style="transition-delay: 200ms;"><p class="font-bold text-indigo-500 mb-2">Fase 2: Tahun Kedua</p><h3 class="text-2xl font-bold mb-4">Eskalasi & Diversifikasi</h3><ul class="space-y-2 text-gray-600 list-disc list-inside"><li><strong>Produk:</strong> Meluncurkan template spesifik industri dan workshop online.</li><li><strong>Pemasaran:</strong> Kolaborasi dengan influencer dan membangun SEO.</li><li><strong>Tujuan:</strong> Menggandakan basis pengguna & menjadi sumber edukasi dikenal.</li></ul></div>
+                    <div class="card border-t-4 border-indigo-700 reveal" style="transition-delay: 400ms;"><p class="font-bold text-indigo-500 mb-2">Fase 3: Tahun Ketiga+</p><h3 class="text-2xl font-bold mb-4">Otoritas & Ekosistem</h3><ul class="space-y-2 text-gray-600 list-disc list-inside"><li><strong>Produk:</strong> Meluncurkan layanan konsultasi dan pengembangan versi SaaS.</li><li><strong>Pemasaran:</strong> Fokus pada PR, menjadi pembicara, dan program afiliasi.</li><li><strong>Tujuan:</strong> Menjadi *top-of-mind brand* untuk pertumbuhan UMKM.</li></ul></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bagian FAQ -->
+        <section id="faq" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-3xl">
+                 <div class="text-center reveal">
+                    <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+                    <p class="section-subtitle">Menjawab keraguan Anda.</p>
+                </div>
+                <div class="space-y-4 reveal">
+                    <div class="faq-item bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="faq-question flex justify-between items-center">
+                            <h4 class="font-semibold text-lg">Apakah saya perlu mengerti akuntansi untuk menggunakan ini?</h4>
+                            <div class="text-indigo-600">
+                                <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer text-gray-600"><p>Tidak sama sekali! Sistem ini dirancang untuk pemilik bisnis, bukan akuntan. Anda hanya perlu memasukkan data penjualan dan pengeluaran harian, sisanya akan dihitung secara otomatis.</p></div>
+                    </div>
+                     <div class="faq-item bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="faq-question flex justify-between items-center">
+                            <h4 class="font-semibold text-lg">Apakah data saya aman di Google Sheets?</h4>
+                            <div class="text-indigo-600">
+                                <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer text-gray-600"><p>Sangat aman. Google memiliki standar keamanan kelas dunia. Selama Anda tidak membagikan akses file Anda kepada orang yang tidak dikenal, data Anda hanya bisa diakses oleh Anda.</p></div>
+                    </div>
+                    <div class="faq-item bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="faq-question flex justify-between items-center">
+                            <h4 class="font-semibold text-lg">Bagaimana jika saya mengalami kesulitan saat menggunakan?</h4>
+                            <div class="text-indigo-600">
+                                <svg class="w-6 h-6 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                <svg class="w-6 h-6 icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer text-gray-600"><p>Setiap pembelian sudah termasuk panduan E-book yang detail. Selain itu, Anda bisa bergabung dengan komunitas eksklusif kami untuk bertanya langsung kepada tim kami atau berdiskusi dengan sesama pengguna.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h2 class="text-3xl font-bold mb-4 reveal">Siap Mengambil Kontrol Penuh Atas Bisnis Anda?</h2>
+            <p class="max-w-2xl mx-auto mb-8 reveal" style="transition-delay: 200ms;">Hubungi kami untuk informasi lebih lanjut atau mulailah perjalanan Anda dengan sistem kami hari ini.</p>
+            <div class="reveal" style="transition-delay: 400ms;">
+                 <a href="mailto:kontak@brandkita.com" class="bg-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-transform transform hover:scale-105 inline-block">kontak@brandkita.com</a>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 reveal" style="transition-delay: 500ms;">
+                <p>&copy; 2025 BrandKita. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Mobile Menu ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // --- Scroll Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const elementsToReveal = document.querySelectorAll('.reveal');
+        elementsToReveal.forEach((el) => observer.observe(el));
+        
+        // --- FAQ Accordion ---
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                // Close all other items
+                faqItems.forEach(i => i.classList.remove('active'));
+                // Open the clicked one if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
